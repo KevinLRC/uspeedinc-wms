@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  Home
+到的
   </div>
 </template>
 
@@ -13,4 +13,6 @@ export default {
   components: {
   }
 }
+
+
 </script>
