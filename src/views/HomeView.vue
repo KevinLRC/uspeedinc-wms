@@ -14,10 +14,10 @@
       <el-table-column prop="name" label="Name"/>
       <el-table-column prop="address" label="Address"/>
 
-      <el-table-column fixed="right" label="Operations" width="120">
-        <template #default>
-          <el-button type="text" size="small" @click="handleEdit">编辑</el-button>
-          <el-button type="text" size="small" @click="handleDelete">
+      <el-table-column label="操作" >
+        <template #default="scope">
+          <el-button size="small" @click="handleEdit">编辑</el-button>
+          <el-button type="danger" size="small" @click="handleDelete">
             <el-popconfirm title="Are you sure to delete this?">
               <template #reference>
                 删除
