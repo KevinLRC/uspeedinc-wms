@@ -10,9 +10,9 @@
             <el-icon>
               <location/>
             </el-icon>
-            <span>Navigator One</span>
+            <span>顺为</span>
           </template>
-          <el-menu-item index="1-3">item three</el-menu-item>
+          <el-menu-item index="1-3">库存</el-menu-item>
 
           <el-sub-menu index="1-4">
             <template #title>item four</template>
@@ -46,3 +46,4 @@ export default {
 <style scoped>
 
 </style>
+
