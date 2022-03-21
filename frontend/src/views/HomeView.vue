@@ -34,7 +34,6 @@
           v-model:page-size="pageSize"
           :page-sizes="[5, 10, 20]"
           :total="total"
-          @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
           layout="total,  prev, pager, next, jumper"
       />
@@ -90,10 +89,10 @@ export default {
   methods: {
 
     load() {
-      console.log("keyword==" + this.keyword)
+      console.log("keyword==" + this.keyword + " currentPage=" + this.currentPage)
       request.get("product", {
         params: {
-          pageNUm: this.currentPage,
+          pageNum: this.currentPage,
           pageSize: this.pageSize,
           keyword: this.keyword,
         }
@@ -116,7 +115,7 @@ export default {
       if (this.form.id) {
         request.put("product", this.form).then(res => {
           console.log(res)
-          if (res.code === 0) {
+          if (res.code === "0") {
             this.load()
             this.$message({
               type: "success",
@@ -132,17 +131,17 @@ export default {
         })
       } else {
         request.post("product", this.form).then(res => {
-          console.log(res)
-          if (res.code === 0) {
+          console.log("res.code=" + (res.code === "0"))
+          if (res.code === "0") {
             this.load()
             this.$message({
               type: "success",
-              message: "修改成功"
+              message: "修改成功22"
             })
           } else {
             this.$message({
               type: "error",
-              message: "修改失败"
+              message: "修改失败11"
             })
           }
         })
@@ -157,11 +156,10 @@ export default {
     handleDelete() {
 
     },
-    handleSizeChange() {
 
-    },
-    handleCurrentChange() {
-
+    handleCurrentChange(currentSize) {
+    this.currentPage = currentSize
+      this.load()
     }
   }
 
