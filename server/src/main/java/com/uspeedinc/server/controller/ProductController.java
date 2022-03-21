@@ -1,12 +1,13 @@
 package com.uspeedinc.server.controller;
 
+import cn.hutool.core.util.StrUtil;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.uspeedinc.server.common.Result;
 import com.uspeedinc.server.entity.Product;
 import com.uspeedinc.server.mapper.ProductMapper;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -31,6 +32,21 @@ public class ProductController {
         return Result.success();
     }
 
+    @GetMapping
+    public Result<?> findPage(@RequestParam(defaultValue = "1") Integer pageNum,
+                              @RequestParam(defaultValue = "10") Integer pageSize,
+                              @RequestParam(defaultValue = "") String keyword) {
+        System.out.println("pageNum=" + pageNum + "pageSize=" + pageSize + "keyword=" + keyword);
+        LambdaQueryWrapper<Product> wrapper = Wrappers.lambdaQuery();
+        if (StrUtil.isNotBlank(keyword)) {
+            wrapper.like(Product::getSkuNo, keyword);
+        }
+
+        Page<Product> productPage = productMapper.selectPage(new Page<>(pageNum, pageSize),
+                wrapper);
+        System.out.println(productPage);
+        return Result.success(productPage);
+    }
 
 
 }
