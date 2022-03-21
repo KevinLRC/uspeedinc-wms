@@ -16,7 +16,7 @@
 
       <el-table-column label="操作">
         <template #default="scope">
-          <el-button size="small" @click="handleEdit">编辑</el-button>
+          <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
           <el-button type="danger" size="small" @click="handleDelete">
             <el-popconfirm title="Are you sure to delete this?">
               <template #reference>
@@ -113,12 +113,45 @@ export default {
 
     saveProduct() {
       this.dialogVisible = false;
-      request.post("product", this.form).then(res => {
-        console.log(res)
-      })
+      if (this.form.id) {
+        request.put("product", this.form).then(res => {
+          console.log(res)
+          if (res.code === 0) {
+            this.load()
+            this.$message({
+              type: "success",
+              message: "修改成功"
+            })
+          } else {
+            this.$message({
+              type: "error",
+              message: "修改失败" + res.message
+            })
+          }
+
+        })
+      } else {
+        request.post("product", this.form).then(res => {
+          console.log(res)
+          if (res.code === 0) {
+            this.load()
+            this.$message({
+              type: "success",
+              message: "修改成功"
+            })
+          } else {
+            this.$message({
+              type: "error",
+              message: "修改失败"
+            })
+          }
+        })
+      }
     },
 
-    handleEdit() {
+    handleEdit(row) {
+      this.form = JSON.parse(JSON.stringify(row))
+      this.dialogVisible = true;
 
     },
     handleDelete() {

@@ -48,5 +48,11 @@ public class ProductController {
         return Result.success(productPage);
     }
 
+    @PutMapping
+    public Result update(@RequestBody Product product) {
+        productMapper.updateById(product);
+        return Result.success();
+    }
+
 
 }
