@@ -2,36 +2,26 @@
   <div>
     <el-col :span="2222">
       <el-menu
-          default-active="2"
+
           class="el-menu-vertical-demo"
           style="width: 200px; min-height: calc(100vh - 50px)">
         <el-sub-menu index="1">
           <template #title>
-            <el-icon>
-              <location/>
-            </el-icon>
             <span>顺为</span>
           </template>
-          <el-menu-item index="1-3">库存</el-menu-item>
-
-          <el-sub-menu index="1-4">
-            <template #title>item four</template>
-            <el-menu-item index="1-4-1">item one</el-menu-item>
-          </el-sub-menu>
+          <el-menu-item index="1-1">商品详情</el-menu-item>
+          <el-menu-item index="1-2">库存</el-menu-item>
+          <el-menu-item index="1-3">一件代发</el-menu-item>
+          <el-menu-item index="1-4">换标</el-menu-item>
         </el-sub-menu>
-        <el-menu-item index="2">
-          <el-icon>
-            <icon-menu/>
-          </el-icon>
-          <span>Navigator Two</span>
-        </el-menu-item>
 
-        <el-menu-item index="4">
-          <el-icon>
-            <setting/>
-          </el-icon>
-          <span>Navigator Four</span>
-        </el-menu-item>
+        <el-sub-menu index="2">
+          <template #title>
+            <span>卡派</span>
+          </template>
+          <el-menu-item index="2-1">德容</el-menu-item>
+          <el-menu-item index="2-2">Sugar</el-menu-item>
+        </el-sub-menu>
       </el-menu>
     </el-col>
   </div>
