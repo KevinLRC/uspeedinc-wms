@@ -17,8 +17,8 @@
       <el-table-column label="操作">
         <template #default="scope">
           <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
-          <el-button type="danger" size="small" @click="handleDelete">
-            <el-popconfirm title="Are you sure to delete this?">
+          <el-button type="danger" size="small" >
+            <el-popconfirm title="Are you sure to delete this?" @confirm="handleDelete(scope.row.id)">
               <template #reference>
                 删除
               </template>
@@ -29,7 +29,7 @@
     </el-table>
     <div style="margin: 10px">
 
-      <el-pagination
+      <el-pag ination
           v-model:currentPage="currentPage"
           v-model:page-size="pageSize"
           :page-sizes="[5, 10, 20]"
@@ -153,8 +153,23 @@ export default {
       this.dialogVisible = true;
 
     },
-    handleDelete() {
-
+    handleDelete(id) {
+      console.log("id=" + id)
+      request.delete("product/" + id)
+      .then(res => {
+        if (res.code === "0") {
+          this.load()
+          this.$message({
+            type: "success",
+            message: "删除成功"
+          })
+        } else {
+          this.$message({
+            type: "error",
+            message: "删除失败"
+          })
+        }
+      })
     },
 
     handleCurrentChange(currentSize) {
