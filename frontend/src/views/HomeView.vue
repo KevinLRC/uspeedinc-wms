@@ -17,7 +17,7 @@
       <el-table-column label="操作">
         <template #default="scope">
           <el-button size="small" @click="handleEdit(scope.row)">编辑</el-button>
-          <el-button type="danger" size="small" >
+          <el-button type="danger" size="small">
             <el-popconfirm title="Are you sure to delete this?" @confirm="handleDelete(scope.row.id)">
               <template #reference>
                 删除
@@ -29,13 +29,13 @@
     </el-table>
     <div style="margin: 10px">
 
-      <el-pag ination
-          v-model:currentPage="currentPage"
-          v-model:page-size="pageSize"
-          :page-sizes="[5, 10, 20]"
-          :total="total"
-          @current-change="handleCurrentChange"
-          layout="total,  prev, pager, next, jumper"
+      <el-pagination ination
+                     v-model:currentPage="currentPage"
+                     v-model:page-size="pageSize"
+                     :page-sizes="[5, 10, 20]"
+                     :total="total"
+                     @current-change="handleCurrentChange"
+                     layout="total,  prev, pager, next, jumper"
       />
 
       <el-dialog v-model="dialogVisible" title="Tips" width="30%">
@@ -156,24 +156,24 @@ export default {
     handleDelete(id) {
       console.log("id=" + id)
       request.delete("product/" + id)
-      .then(res => {
-        if (res.code === "0") {
-          this.load()
-          this.$message({
-            type: "success",
-            message: "删除成功"
+          .then(res => {
+            if (res.code === "0") {
+              this.load()
+              this.$message({
+                type: "success",
+                message: "删除成功"
+              })
+            } else {
+              this.$message({
+                type: "error",
+                message: "删除失败"
+              })
+            }
           })
-        } else {
-          this.$message({
-            type: "error",
-            message: "删除失败"
-          })
-        }
-      })
     },
 
     handleCurrentChange(currentSize) {
-    this.currentPage = currentSize
+      this.currentPage = currentSize
       this.load()
     }
   }

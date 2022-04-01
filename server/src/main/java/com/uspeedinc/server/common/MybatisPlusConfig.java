@@ -16,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
  */
 
 @Configuration
-@MapperScan("com.uspeedinc.server.mapper ")
+@MapperScan("com.uspeedinc.server.mapper")
 public class MybatisPlusConfig {
 
     @Bean

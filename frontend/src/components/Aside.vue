@@ -10,9 +10,9 @@
         <el-menu-item index="shunwei-label">换标</el-menu-item>
       </el-sub-menu>
 
-      <el-sub-menu index="2">
+      <el-sub-menu index="container">
         <template #title>
-          <span>卡派</span>
+          <span>货柜</span>
         </template>
         <el-menu-item index="2-1">德容</el-menu-item>
         <el-menu-item index="2-2">Sugar</el-menu-item>
