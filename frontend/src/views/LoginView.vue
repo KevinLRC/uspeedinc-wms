@@ -1,6 +1,8 @@
 <template>
-<div>
-  login
+<div style="width: 100%; height: 100vh; background-color: cornflowerblue">
+  <div>
+
+  </div>
 </div>
 </template>
 
