@@ -10,9 +10,14 @@ const routes = [
         redirect:"/home",
         children: [
             {
-                path: '/home',
-                name: 'Home',
-                component: () => import("@/views/HomeView"),
+                path: '/sw-product-details',
+                name: 'SWProductDetails',
+                component: () => import("@/views/SWProductDetailsView"),
+            },
+            {
+                path: '/sw-stock',
+                name: 'SWStock',
+                component: () => import("@/views/SWStockView"),
             }
         ]
     },

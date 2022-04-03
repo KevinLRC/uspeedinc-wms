@@ -1,11 +1,12 @@
 <template>
   <div>
     <el-menu class="el-menu-vertical-demo"
-             style="width: 200px; min-height: calc(100vh - 50px)">
+             style="width: 200px; min-height: calc(100vh - 50px)"
+             router>
       <el-sub-menu index="shunwei">
         <template #title>顺为</template>
-        <el-menu-item index="shunwei-product-detail">商品详情</el-menu-item>
-        <el-menu-item index="shunwei-stock">库存</el-menu-item>
+        <el-menu-item index="sw-product-details">商品详情</el-menu-item>
+        <el-menu-item index="sw-stock">库存</el-menu-item>
         <el-menu-item index="shunwei-single">一件代发</el-menu-item>
         <el-menu-item index="shunwei-label">换标</el-menu-item>
       </el-sub-menu>
