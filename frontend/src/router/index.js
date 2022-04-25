@@ -1,13 +1,14 @@
 import {createRouter, createWebHistory} from 'vue-router'
 import MainLayout from '../layout/MainLayout'
 import LoginView from '../views/LoginView'
+import ContainerListView from '../views/container/ContainerListView'
 
 const routes = [
     {
-        path: '/',
+        path: '/dashboard',
         name: 'MainLayout',
         component: MainLayout,
-        redirect:"/home",
+
         children: [
             {
                 path: '/sw-product-details',
@@ -22,9 +23,20 @@ const routes = [
         ]
     },
     {
+        path: '/',
+        name: 'Root',
+        redirect:"/dashboard",
+    },
+    {
         path: '/login',
         name: 'Login',
         component: LoginView
+
+    },
+    {
+        path: '/containerlist',
+        name: 'ContainerList',
+        component: ContainerListView
 
     }
 ]
